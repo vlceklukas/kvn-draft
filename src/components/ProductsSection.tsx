@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ProductsSection = () => {
   const products = [
     {
-      id: 'K01',
+      id: 'k01',
       name: 'KIVANO K01',
       description: 'Černé tělo s černými skly',
       price: 1999,
@@ -12,7 +13,7 @@ const ProductsSection = () => {
       features: ['Černé polarizované sklo', 'Klasický design', 'UV400 ochrana'],
     },
     {
-      id: 'K02',
+      id: 'k02',
       name: 'KIVANO K02',
       description: 'Černé tělo s barevnými skly',
       price: 1999,
@@ -21,7 +22,7 @@ const ProductsSection = () => {
       popular: true,
     },
     {
-      id: 'K03',
+      id: 'k03',
       name: 'KIVANO K03',
       description: 'Bílé tělo s fotochromatickými skly',
       price: 2199,
@@ -95,18 +96,16 @@ const ProductsSection = () => {
                   {product.price.toLocaleString('cs-CZ')} Kč
                 </div>
                 <div className="text-sm text-primary font-medium mb-4">Skladem</div>
-                <a
-                  href={`https://kivano.cz/kivano-0${index + 1}-sportovni-hudebni-bryle/`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/produkt/${product.id}`}
                   className={`block w-full py-3 rounded-full font-semibold transition-all duration-300 ${
                     product.popular
                       ? 'bg-primary text-primary-foreground hover:glow-yellow'
                       : 'border border-border hover:border-primary hover:text-primary'
                   }`}
                 >
-                  Koupit
-                </a>
+                  Zobrazit detail
+                </Link>
               </div>
             </motion.div>
           ))}
